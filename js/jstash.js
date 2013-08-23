@@ -155,9 +155,7 @@
 					return;
 				}
 
-				this.cache.keys = [];
-				this.cache.values = [];
-				this.cache.expires = [];
+				this.cache.keys.length = this.cache.values.length = this.cache.expires.length = 0;
 			}
 		};
 
