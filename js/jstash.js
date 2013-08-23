@@ -87,21 +87,23 @@
 
 		jStash.prototype = {
 			get: function(key) {
-				var that = this, itemIndexes;
+				var that = this, itemIndexes, items;
 
-				if(!isValidSelector(key)) {
+				if(key && !isValidSelector(key)) {
 					throw new TypeException(messages.error.type.itemSelector);
 				}
 
 				if(key) {
 					itemIndexes = getItemIndexes.call(this, key);
 
-					return itemIndexes.map(function(index) {
+					items = itemIndexes.map(function(index) {
 						return that.cache.values[index];
 					});
+
+					return items.length === 0 ? null : items.length === 1 ? items[0] : items; 
 				}
 
-				return this.cache.values; 
+				return this.cache.values.length === 0 ? null : this.cache.values.length === 1 ? this.cache.values[0] : this.cache.values; 
 			},
 			set: function(key, value, options) {
 				var that = this, itemIndex,
@@ -136,7 +138,7 @@
 			remove: function(key) {
 				var that = this, itemIndexes;
 
-				if(!isValidSelector(key)) {
+				if(key && !isValidSelector(key)) {
 					throw new TypeException(messages.error.type.itemSelector);
 				}
 
