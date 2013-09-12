@@ -4,7 +4,7 @@
  *
  *	Copyright 2013, Ryan Bolton:
  *	<ryan at ryanbolton dot me>
- *	Gingham is available under the MIT license.
+ *	jStash is available under the MIT license.
  */
  ;(function(window, library) {
  	'use strict';
